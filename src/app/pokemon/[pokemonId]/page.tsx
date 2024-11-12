@@ -3,7 +3,8 @@ import { PokemonClient } from "pokenode-ts";
 
 const pokemonClient = new PokemonClient();
 
-async function PokemonPage({ params }: { params: { pokemonId: number } }) {
+async function PokemonPage(props: { params: Promise<{ pokemonId: number }> }) {
+  const params = await props.params;
   const pokemon = await pokemonClient.getPokemonById(params.pokemonId);
 
   if (!pokemon) {
