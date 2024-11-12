@@ -15,9 +15,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="bg-gradient-to-r from-[#b71e1e] to-[#fdff7c] text-white">
+      <body className="bg-gradient-to-r from-[#b71e1e] to-[#7c8bff] text-white">
         <header className="-mb-8 mt-4 flex items-center justify-center">
           <Link href="/" className="text-2xl font-bold text-black">
+            {" "}
             T3 Pokedex
           </Link>
         </header>
