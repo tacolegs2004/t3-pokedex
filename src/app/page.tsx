@@ -16,7 +16,7 @@ const PokemonComponent = (props: { pokemon: Pokemon }) => {
       className="flex flex-col items-center transition-opacity"
       key={props.pokemon.id}
     >
-      {props.pokemon.sprites.front_default ? (
+      {props.pokemon.sprites.front_default && (
         <Image
           src={props.pokemon.sprites.front_default}
           alt={props.pokemon.name}
@@ -25,8 +25,6 @@ const PokemonComponent = (props: { pokemon: Pokemon }) => {
           layout="fixed"
           className="animate-fade-in transition-all hover:scale-110 hover:opacity-80"
         />
-      ) : (
-        <div>Sprite not found.</div>
       )}
       <div className="mt-[-0.5rem] text-center text-lg font-semibold capitalize text-yellow-500">
         {props.pokemon.name}
