@@ -1,42 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
-import { type Pokemon, PokemonClient } from "pokenode-ts";
+import { PokemonClient } from "pokenode-ts";
+import PokemonCard from "./_components/pokemon-card";
 
 const pokemonClient = new PokemonClient();
-
-const PokemonComponent = (props: { pokemon: Pokemon }) => {
-  if (!props.pokemon) {
-    return <div>Pokemon not found.</div>;
-  }
-
-  return (
-    <Link
-      href={`/pokemon/${props.pokemon.id}`}
-      prefetch={true}
-      className="flex flex-col items-center transition-opacity"
-      key={props.pokemon.id}
-    >
-      {props.pokemon.sprites.front_default && (
-        <Image
-          src={props.pokemon.sprites.front_default}
-          alt={props.pokemon.name}
-          width={100}
-          height={100}
-          layout="fixed"
-          className="animate-fade-in transition-all hover:scale-110 hover:opacity-80"
-        />
-      )}
-      <div className="mt-[-0.5rem] text-center text-lg font-semibold capitalize text-yellow-500">
-        {props.pokemon.name}
-      </div>
-    </Link>
-  );
-};
 
 const HomePage = async () => {
   const pokeData = await Promise.all(
     Array.from({ length: 151 }, (_, i) => pokemonClient.getPokemonById(i + 1)),
   );
+
+  if (!pokeData) {
+    return <div>Error fetching pokemon data.</div>;
+  }
 
   return (
     <div className="flex flex-col items-center justify-center gap-4 py-20">
@@ -45,7 +19,7 @@ const HomePage = async () => {
       </h1>
       <div className="flex flex-wrap justify-center gap-4">
         {pokeData.map((pokemon) => (
-          <PokemonComponent key={pokemon.id} pokemon={pokemon} />
+          <PokemonCard key={pokemon.id} pokemon={pokemon} />
         ))}
       </div>
     </div>

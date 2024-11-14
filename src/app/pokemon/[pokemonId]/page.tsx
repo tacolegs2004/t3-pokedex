@@ -3,9 +3,8 @@ import { PokemonClient } from "pokenode-ts";
 
 const pokemonClient = new PokemonClient();
 
-async function PokemonPage(props: { params: Promise<{ pokemonId: number }> }) {
-  const params = await props.params;
-  const pokemon = await pokemonClient.getPokemonById(params.pokemonId);
+const PokemonPage = async (props: { params: { pokemonId: number } }) => {
+  const pokemon = await pokemonClient.getPokemonById(props.params.pokemonId);
 
   if (!pokemon) {
     return <div>Pokemon not found.</div>;
@@ -44,6 +43,6 @@ async function PokemonPage(props: { params: Promise<{ pokemonId: number }> }) {
       </div>
     </div>
   );
-}
+};
 
 export default PokemonPage;
