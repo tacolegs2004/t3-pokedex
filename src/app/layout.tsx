@@ -16,13 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body className="bg-gradient-to-r from-[#b71e1e] to-[#7c8bff] text-white">
-        <header className="-mb-8 mt-4 flex items-center justify-center">
-          <Link href="/" className="text-2xl font-bold text-black">
-            {" "}
-            T3 Pokedex
-          </Link>
-        </header>
         <main className="flex min-h-screen flex-col items-center justify-center">
+          <header className="mt-4">
+            <Link href="/" className="gap-2 text-4xl font-bold text-yellow-400">T3 Pokedex</Link>
+          </header>
           {children}
         </main>
       </body>
