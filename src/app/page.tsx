@@ -13,12 +13,10 @@ const HomePage = async () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4 py-10">
-      <div className="flex flex-wrap justify-center gap-4">
-        {pokeData.map((pokemon) => (
-          <PokemonCard key={pokemon.id} pokemon={pokemon} />
-        ))}
-      </div>
+    <div className="flex flex-wrap items-center justify-center gap-4 py-10">
+      {pokeData.map((pokemon) => (
+        <PokemonCard key={pokemon.id} pokemon={pokemon} />
+      ))}
     </div>
   );
 };
