@@ -1,4 +1,5 @@
-import Image from "next/legacy/image";
+import * as React from "react";
+import Image from "next/image";
 import { PokemonClient } from "pokenode-ts";
 
 const pokemonClient = new PokemonClient();
@@ -10,7 +11,7 @@ const PokemonPage = async (props: {
   const pokemon = await pokemonClient.getPokemonById(params.pokemonId);
 
   if (!pokemon) {
-    return <div>Loading...</div>;
+    return <div>Pokemon not found.</div>;
   }
 
   return (
@@ -26,10 +27,10 @@ const PokemonPage = async (props: {
           height={120}
         />
         <div className="mt-4 text-center">
-
           <div className="text-lg capitalize">
-            <strong>Type:</strong>{" "}
-            {pokemon.types.map(({ type }) => type.name).join(", ")}
+            <strong>Type:</strong> {pokemon.types.map(({ type }) =>
+              type.name
+            ).join(", ")}
           </div>
 
           <div className="text-lg">
@@ -44,7 +45,6 @@ const PokemonPage = async (props: {
             <strong>Abilities:</strong>{" "}
             {pokemon.abilities.map(({ ability }) => ability.name).join(", ")}
           </div>
-
         </div>
       </section>
     </div>

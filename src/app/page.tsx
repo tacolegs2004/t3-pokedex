@@ -1,5 +1,6 @@
+import * as React from "react";
 import { PokemonClient } from "pokenode-ts";
-import PokemonCard from "./_components/pokemon-card";
+import PokemonCard from "./_components/pokemon-card.tsx";
 
 const pokemonClient = new PokemonClient();
 
